@@ -1,11 +1,11 @@
 class TimeQuery
   FORMATS = {
-    'year' => 'year',
-    'month' => 'month',
-    'day' => 'day',
-    'hour' => 'hour',
-    'minute' => 'min',
-    'second' => 'sec'
+    'year' => '%Y',
+    'month' => '%m',
+    'day' => '%d',
+    'hour' => '%H',
+    'minute' => '%M',
+    'second' => '%S'
   }.freeze
 
   def initialize(formats)
@@ -19,7 +19,7 @@ class TimeQuery
 
   def result
     @formats
-      .map { |format| @time.send(FORMATS[format]) }
+      .map { |format| @time.strftime(FORMATS[format]) }
       .join('-')
   end
 
